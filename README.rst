@@ -435,18 +435,13 @@ nous aurons défini au moyen de la fonctions setTimeout.
         }
         
 
-Fichier JavaScript final
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Si on résume donc, notre fichier contenant nos différentes fonctions
-JavaScript ressemble à ceci:
-
 Conclusion
 ~~~~~~~~~~
 
 Créer un éditeur WYSIWYG de base en JavaScript est donc quelque chose
 d’assez simple.
- Les fonctions développées ici restes élémentaires, à vous de les
+
+ Les fonctions développées ici restent élémentaires, à vous de les
 developper suivant vos besoins.
  N’hésitez pas non plus à utiliser le CSS pour rendre votre nouvel
 outils plus attrayant.
