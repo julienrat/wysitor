@@ -1,8 +1,9 @@
 Créer un éditeur WYSIWYG en JavaScript
 ======================================
 
-Créer un éditeur WYSIWYG en JavaScript
---------------------------------------
+Note: Cette application et cet article ont été écrit en 2009 et pas mis à jour depuis.
+Ils sont concervé à titre informatif.
+
 
 De plus en plus de personnes souhaitent se faire une place sur le web en
 créant leur propre blog ou site. Il existe d’ailleur de nombreux outils
@@ -13,14 +14,14 @@ créer un site web.
 Partant de ce constat, il a fallu créer des éditeurs de texte riches
 permettant de formater un texte pour une personne ne maitrisant pas la
 syntaxe HTML, BBCode ou encore Wiki.
- Ces éditeurs permettant de composer visuellement le résultat escompté
+Ces éditeurs permettant de composer visuellement le résultat escompté
 sont appelés WYSIWYG de l’acronyme anglais “What You See Is What You
 Get” qui littéralement se traduirait “ce que vous voyez est ce que vous
 obtenez”.
 
 Pour fournir ce genre d’outils il existe différents moyens technique
 tels que les applets Java, Flash ou encore JavaScript.
- Chaque solution a ses avantages et ses inconvénients:
+Chaque solution a ses avantages et ses inconvénients:
 
 -  Les deux premières méthodes citées sont basées sur des plugins et ont
    donc pour avantage de fonctionner sur la plupart des systèmes et
@@ -36,7 +37,7 @@ tels que les applets Java, Flash ou encore JavaScript.
 Actuellement ces éditeurs ne fonctionnent qu’avec deux types de
 navigateurs, ceux basés sur le moteur MSHTML (comme Internet Explorer)
 ou ceux basés sur moteur Gecko (tel que Firefox, Mozilla ou SeaMonkey).
- Avec un navigateur comme Opéra ou Konqueror (ainsi que tous ceux basés
+Avec un navigateur comme Opéra ou Konqueror (ainsi que tous ceux basés
 sur le moteur KHTML), l’éditeur fonctionnera mais de manière plus
 limitée.
 
@@ -44,7 +45,7 @@ Pour la suite de cet article vous aurez besoin de quelques notions de
 HTML et de JavaScript.
 
 Définir le navigateur utilisé
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Si j’ai fait la distinction entre les différents types de navigateurs en
 introduction c’est parce que la méthode utilisée pour déployer l’éditeur
@@ -53,7 +54,7 @@ sera différente suivant le moteur du navigateur.
 On va donc commencer par définir quel type de navigateur est utilisé
 pour consulter la page en testant une fonction propre à chaque
 navigateur.
- Ces variables seront globales car elle nous servirons tout au long de
+Ces variables seront globales car elle nous servirons tout au long de
 notre script.
 
 ::
@@ -63,7 +64,7 @@ notre script.
         
 
 Une zone de texte éditable
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 Pour réaliser notre éditeur, il nous faut rendre une zone de texte
 éditable. Avec IE rien de plus simple, n’importe quelle balise fera
@@ -72,7 +73,7 @@ ont cette particularité là.
 
 Nous allons donc créer une IFrame et rendre son contenu éditable grâce à
 la propriété JavaScript designMode.
- Il faut veiller à bien identifier notre IFrame à l’aide d’un ID qui
+Il faut veiller à bien identifier notre IFrame à l’aide d’un ID qui
 nous servira dans notre code JavaScript.
 
 ::
@@ -118,11 +119,11 @@ Dès à présent vous pouvez saisir du texte dans votre IFrame mais pas le
 mettre en page. Pour cela il va falloir créer les boutons adéquats.
 
 Boutons de mise en forme
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Nos boutons de mise en forme seront de simples liens, images ou inputs
 de type boutons qui appelleront notre fonction JavaScript.
- Cette fonction utilisera pour modifier la mise en forme de notre texte
+Cette fonction utilisera pour modifier la mise en forme de notre texte
 la méthode execCommand de l’objet document du contenu éditable.
 
 Là encore nous allons être obligé de faire une distinction entre les
@@ -147,7 +148,7 @@ navigateurs pour modifier le contenu.
 
 Notre fonction prend deux arguments qui sont l’action à réaliser et une
 valeur optionnelle.
- La liste des actions possibles est disponible sur le `site de Microsoft`_ 
+La liste des actions possibles est disponible sur le `site de Microsoft`_ 
 mais toutes ne sont pas supportées par le moteur Gecko, le
 plus simple est de tester celles qui fonctionnent.
 
@@ -220,12 +221,12 @@ La liste d’actions est loins d’être exaustive, à vous de rajouter celles
 dont vous avez besoin.
 
 Fonctions avancées
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Vous avez peut être remarqué que dans le code précédent, il n’y avait
 pas la possibilité d’ajouter de liens ou d’images ou encore que
 l’utilisateur était contraint d’utiliser des couleurs prédéfinies.
- Ces fonctions demandent plus de paramètres, comme l’adresse de l’image
+Ces fonctions demandent plus de paramètres, comme l’adresse de l’image
 ou du lien à créer.
 
 Pour obtenir toutes les informations manquantes rien de plus simple que
@@ -240,7 +241,7 @@ Par exemple pour demander l’adresse du lien:
         
 
 Nous allons maintenant intégrer tout cela à notre commande setContent.
- Pour arriver à notre but, nous allons rajouter des conditions, qui
+Pour arriver à notre but, nous allons rajouter des conditions, qui
 lorsque l’action envoyée est par exemple ajouter\_lien, le script
 demande l’URL à l’utilisateur.
 
@@ -336,10 +337,10 @@ traités, à savoir, si nous avons juste besoin de demander une
 information supplémentaire à l’utilisateur, si c’est à nous d’insérer du
 code HTML directement ou encore si l’option ne concerne qu’un certain
 type de valeur.
- À vous après de créer vos actions en fonction de vos besoins.
+À vous après de créer vos actions en fonction de vos besoins.
 
 Récupérer notre texte formaté
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Une fois le texte formaté il serait bien de pouvoir le récupérer, il
 serait plus simple pour cela que nous passions par un champs texte afin
@@ -385,7 +386,7 @@ pour qu’il y ai correspondance entre la fonction JavaScript et le code
 HTML.
 
 Pré-afficher du texte dans l’éditeur
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 Si nous avons été capable de récupérer le contenu de notre IFrame pour
 le mettre dans notre zone de texte nous allons bien pouvoir faire
@@ -408,7 +409,7 @@ empêcher le contenu de départ d’être affiché dans notre éditeur.
 Pour palier à ce defaut nous allons appeler la fonction d’initialisation
 récursivement (sans pour autant réinitialiser l’éditeur) jusqu’à ce que
 le contenu soit bien insérer.
- Les appelles réccursifs de iniEditor() seront espacés d’un temps que
+Les appelles réccursifs de iniEditor() seront espacés d’un temps que
 nous aurons défini au moyen de la fonctions setTimeout.
 
 ::
@@ -436,14 +437,14 @@ nous aurons défini au moyen de la fonctions setTimeout.
         
 
 Conclusion
-~~~~~~~~~~
+----------
 
 Créer un éditeur WYSIWYG de base en JavaScript est donc quelque chose
 d’assez simple.
 
- Les fonctions développées ici restent élémentaires, à vous de les
+Les fonctions développées ici restent élémentaires, à vous de les
 developper suivant vos besoins.
- N’hésitez pas non plus à utiliser le CSS pour rendre votre nouvel
+N’hésitez pas non plus à utiliser le CSS pour rendre votre nouvel
 outils plus attrayant.
 
 À noter que suivant le navigateur utilisé, le code HTML généré par
