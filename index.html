@@ -1,0 +1,114 @@
+<!--
+    WYSIWYG on-line editor in JavaScript
+    Copyright (C) 2007  Alexandre Joseph <http://www.alexandrejoseph.com/>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Language" content="fr" />
+	<title>&Eacute;diteur WYSIWYG en ligne</title>
+	<style type="text/css" media="screen" title="WYSIWIG Editor">
+		@import url(./style.css);
+   	</style>
+	<script type="text/javascript" src="./editor.js"></script>
+    <script type="text/javascript">
+    function displayResult() { 
+        document.getElementById('editorResult').innerHTML = "<h2>Code renvoy&eacute; par l'editeur</h2><pre>" + document.getElementById('editorTextarea').value + "</pre>";  
+    }
+    </script>
+</head>
+<body>
+<div id="wrapper">
+
+    <div id="header">
+      <h3>&Eacute;diteur WYSIWYG en ligne</h3>
+      <h4>What You See Is What You Get, mise en forme d'un texte simplement</h4>
+    </div>
+    <div id="contentarea">
+      <div id="content">
+        <h2>Int&eacute;ret de l'&eacute;diteur</h2>
+        <p>
+	Force est de constater que bon nombre de personnes ne connaissent pas la syntaxe <a href="http://en.wikipedia.org/wiki/XHTML">xhtml</a>, <a href="http://en.wikipedia.org/wiki/BBCode">bbcode</a> ou encore <a href="http://en.wikipedia.org/wiki/Wiki">wiki</a>. Par cons&eacute;cant, la mise en page d'une page de le site web devient un vrais parcour du combattant.<br />
+	Partant de ce constat, et currieux de decouvir le fonctionnement d'un editeur <a href="http://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> en ligne (et par la m&ecirc;me occasion le <a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>), je me suis lanc&eacute; dans la cr&eacute;ation de cet &eacute;diteur, con&ccedil;u le plus simplement possible, en exploitant au maximum les fonctions des navigateurs.
+	</p>
+	<p>
+	Vous pouvez r&eacute;utiliser cet &eacute;diteur suivant les termes de la license <a href="http://www.gnu.org/copyleft/gpl.html" title="GPL">GPL</a>.
+	</p>
+
+    <div id="editorResult">
+    &nbsp;
+    </div>
+
+	<h2>D&eacute;monstration</h2>
+  
+	<form action="#" method="post" id="editorForm">
+		<p>
+			<input class="editButton" onclick="setContent('bold');" value="Gras" title="Gras" type="button" id="gras" />
+			<input class="editButton" onclick="setContent('italic');" value="Italic"  title="Italic" type="button" id="italic" />
+			<input class="editButton" onclick="setContent('underline');" value="Soulign" title="Soulign&eacute;" type="button" id="souligne" />
+			<input class="editButton" onclick="setContent('insertImage');" value="&eacute;rer une Image" title="Ins&eacute;rer une image" type="button" id="image" />
+			<input class="editButton" onclick="setContent('createLink');" value="Cr&eacute;er un lien" title="Cr&eacute;er un lien" type="button" id="lien" />
+			<input class="editButton" onclick="setContent('unlink');" value="Supprimer un lien" title="Supprimer un lien" type="button" id="unlink" />
+			<input class="editButton" onclick="setContent('justifyLeft');" value="Aligner &agrave; gauche" title="Aligner &agrave; gauche" type="button" id="gauche" />
+			<input class="editButton" onclick="setContent('justifyCenter');" value="Centr&eacute;" title="Centr&eacute;" type="button" id="centre" />
+			<input class="editButton" onclick="setContent('justifyRight');" value="Aligner &agrave; droite" title="Aligner &agrave; droite" type="button" id="droite" />
+			<input class="editButton" onclick="setContent('justifyFull');" value="Justifier" title="Justifier" type="button" id="justifier" />
+			<input class="editButton" onclick="setContent('strikeThrough');" value="Barr&eacute;" title="Barr&eacute;" type="button" id="barre" />
+			<input class="editButton" onclick="setContent('insertUnorderedList');" value="Liste &agrave; puce" title="Liste &agrave; puce" type="button"  id="puce" />
+			<input class="editButton" onclick="setContent('insertOrderedList')" value="Liste ordonn&eacute;" title="Liste ordonn&eacute;" type="button"   id="ordre" />
+			<span id="select">
+			<select onchange="setContent('foreColor', this.value);this.selectedIndex=0;" name="color" id="color">
+				<option value="none">Choisissez une couleur</option>
+				<option value="black">Noir</option>
+				<option value="white">Blanc</option>
+				<option value="red">Rouge</option>
+				<option value="blue">Bleu</option>
+				<option value="yellow">Jaune</option>
+				<option value="green">Vert</option>
+				<option value="other">&gt;Autre couleur&lt;</option>
+			</select>
+			<select onchange="setContent('fontSize', this.value);this.selectedIndex=0" name="size" id="size">
+				<option value="none">Choisissez une taille</option>
+				<option value="1">Minuscule</option>
+				<option value="2">Petit</option>
+				<option value="3">Normal</option>
+				<option value="4">Gros</option>	
+				<option value="5">Grand</option>
+				<option value="6">Tr&egrave;s grand</option>
+				<option value="7">Enorme</option>
+			</select>
+			</span>
+		</p>
+	
+		<iframe id="editor" onload="iniEditor();">
+			Votre navigateur ne supporte pas les IFrames. Impossible de charger l'editeur WYSIWYG en ligne.
+		</iframe>
+
+		<textarea name="editorTextarea" id="editorTextarea" style="display: none;" cols="0" rows="0">Ici le contenu de depart</textarea>
+
+		<input onclick="getEditorContent();displayResult(); return false;" id="submit" name="submit" value="Envoyer" type="submit" />
+		
+	</form>
+      </div>
+    <div id="bottom">
+	L'int&eacute;gralit&eacute; de ce site web est sous license GPL
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+html, body {
+	margin: 0px;
+	padding:0px;
+	background-image:url(./images/bg.gif);
+}
+
+h1, h2, h3, h4, h5, h6, p, form {
+	margin: 0px;
+	padding:0px;
+}
+
+#wrapper {
+	width:800px;
+	margin:0 auto 0 auto;
+	background-color:#FFF;
+	padding: 10px;
+}
+
+#header {
+	background-image:url(./images/main_img.jpg);
+	background-repeat:no-repeat;
+	height:132px;
+	text-align:right;
+}
+
+#header h3 {
+	font-family:"Trebuchet MS";
+	font-size:48px;
+	color:#fff;
+	font-weight:normal;
+	text-decoration:none;
+	padding:20px 40px 0px 0px;
+}
+
+#header h4 {
+	font-family:"Trebuchet MS";
+	font-size:18px;
+	color:#CCC;
+	font-weight:normal;
+	text-decoration:none;
+	padding:0px 40px 0px 0px;
+}
+
+#content h2{
+	font-family:"Trebuchet MS";
+	font-size:26px;
+	color:#EE8907;
+	font-weight:normal;
+	text-decoration:none;
+	padding: 1em 0 0.5em 0;
+}
+
+#content p{
+	font-family:"Trebuchet MS";
+	font-size:small;
+	color:#797B7A;
+	font-weight:normal;
+	text-decoration:none;
+	padding: 10px 20px 10px 20px;
+}
+
+#content a {
+	color:#EE8907;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+#content a:hover {
+	color:#000;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.orangetext {
+	font-family:"Trebuchet MS";
+	font-size:11px;
+	color:#EE8907;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+#bottom {
+	margin: 0;
+    margin-top: 2em;
+	background-color:#9BBE00;
+	padding:5px;
+	font-family:"Trebuchet MS";
+	font-size:small;
+	color:#fff;
+	text-align: center;
+}
+
+#editor
+{
+	width: 95%;
+	height: 300px;
+	border: 1px solid #666;
+	margin: 0 20px 0 20px;
+}
+
+.editButton
+{
+	font-size: 0px;
+	background: #fff;
+	border: none;
+	width: 20px;
+	height: 20px;
+}
+
+input#submit
+{
+	background: #f0f0f0;
+	border: 1px solid #888;
+	margin: 0.2em 0 0 2em;
+	padding: 0.1em 1em 0.2em 1em;
+}
+
+pre
+{
+	margin-left: 1em;
+	padding: 0.5em;
+	border-left: 0.5em solid #f0f0f0; 
+}
+
+#select
+{
+	padding-left: 3em;
+}
+
+#gras { background: url(./images/bold_fr.gif) no-repeat }
+#italic { background: url(./images/italic.gif) no-repeat }
+#souligne { background: url(./images/underline_fr.gif) no-repeat }
+#image { background: url(./images/image.gif) no-repeat }
+#lien { background: url(./images/link.gif) no-repeat }
+#unlink { background: url(./images/unlink.gif) no-repeat }
+#gauche { background: url(./images/justifyleft.gif) no-repeat }
+#centre { background: url(./images/justifycenter.gif) no-repeat }
+#droite { background: url(./images/justifyright.gif) no-repeat }
+#justifier { background: url(./images/justifyfull.gif) no-repeat }
+#barre { background: url(./images/strikethrough.gif) no-repeat }
+#puce { background: url(./images/bullist.gif) no-repeat }
+#ordre { background: url(./images/numlist.gif) no-repeat }
